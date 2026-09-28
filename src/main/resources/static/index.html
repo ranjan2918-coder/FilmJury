@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FilmJury - A premium short film judging platform for managing entries, judges, and scorecards.">
+    <title>FilmJury — Short Film Judging Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="3"/>
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M2 8h20M2 16h20M8 2v20M16 2v20"/>
+                </svg>
+            </div>
+            <span class="brand-name">FilmJury</span>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-page="dashboard" id="nav-dashboard">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="7" height="7" rx="1"/>
+                </svg>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-page="entries" id="nav-entries">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 3H3a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z"/>
+                    <path d="M1 8h22"/>
+                    <polygon points="10,12 16,15 10,18"/>
+                </svg>
+                <span>Film Entries</span>
+            </a>
+            <a href="#" class="nav-item" data-page="judges" id="nav-judges">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                    <circle cx="9" cy="7" r="4"/>
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+                <span>Judges</span>
+            </a>
+            <a href="#" class="nav-item" data-page="scorecards" id="nav-scorecards">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                </svg>
+                <span>Score Cards</span>
+            </a>
+            <a href="#" class="nav-item" data-page="leaderboard" id="nav-leaderboard">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5C7 4 7 7 7 7"/>
+                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5C17 4 17 7 17 7"/>
+                    <path d="M4 22h16"/>
+                    <path d="M10 22V10a2 2 0 0 1 4 0v12"/>
+                    <rect x="6" y="14" width="4" height="8"/>
+                    <rect x="14" y="11" width="4" height="11"/>
+                </svg>
+                <span>Leaderboard</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="sidebar-version">v1.0.0</div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" id="main-content">
+
+        <!-- Top Bar -->
+        <header class="topbar">
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
+            <h1 class="page-title" id="page-title">Dashboard</h1>
+            <div class="topbar-actions">
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span>API Connected</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Page Container -->
+        <div class="page-container">
+
+            <!-- ============================================ -->
+            <!-- DASHBOARD PAGE -->
+            <!-- ============================================ -->
+            <section class="page active" id="page-dashboard">
+                <div class="stats-grid" id="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon-entries">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="10,4 16,8 10,12"/>
+                                <rect x="2" y="2" width="20" height="20" rx="3"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-entries">0</span>
+                            <span class="stat-label">Film Entries</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon-judges">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-judges">0</span>
+                            <span class="stat-label">Judges</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon-scorecards">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-scorecards">0</span>
+                            <span class="stat-label">Score Cards</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon stat-icon-criteria">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value" id="stat-criteria">0</span>
+                            <span class="stat-label">Criteria</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Leaderboard Preview -->
+                <div class="section-header">
+                    <h2>🏆 Top Films</h2>
+                    <button class="btn btn-ghost" onclick="navigateTo('leaderboard')">View All →</button>
+                </div>
+                <div class="leaderboard-preview" id="dashboard-leaderboard"></div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- ENTRIES PAGE -->
+            <!-- ============================================ -->
+            <section class="page" id="page-entries">
+                <div class="section-header">
+                    <h2>Film Entries</h2>
+                    <button class="btn btn-primary" id="btn-add-entry" onclick="openModal('entry-modal')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                        Add Entry
+                    </button>
+                </div>
+                <div class="entries-grid" id="entries-grid">
+                    <!-- Entries loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- JUDGES PAGE -->
+            <!-- ============================================ -->
+            <section class="page" id="page-judges">
+                <div class="section-header">
+                    <h2>Judges Panel</h2>
+                    <button class="btn btn-primary" id="btn-add-judge" onclick="openModal('judge-modal')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                        Add Judge
+                    </button>
+                </div>
+                <div class="judges-grid" id="judges-grid">
+                    <!-- Judges loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SCORECARDS PAGE -->
+            <!-- ============================================ -->
+            <section class="page" id="page-scorecards">
+                <div class="section-header">
+                    <h2>Score Cards</h2>
+                    <button class="btn btn-primary" id="btn-add-scorecard" onclick="openModal('scorecard-modal')">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <line x1="12" y1="5" x2="12" y2="19"/>
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                        </svg>
+                        Submit Score
+                    </button>
+                </div>
+                <div class="scorecards-table-wrapper">
+                    <table class="data-table" id="scorecards-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Film Entry</th>
+                                <th>Judge</th>
+                                <th>Criterion</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        <tbody id="scorecards-tbody">
+                            <!-- Scorecards loaded dynamically -->
+                        </tbody>
+                    </table>
+                    <div class="empty-state" id="scorecards-empty" style="display:none;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="48" height="48">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                        </svg>
+                        <p>No scorecards submitted yet</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- LEADERBOARD PAGE -->
+            <!-- ============================================ -->
+            <section class="page" id="page-leaderboard">
+                <div class="section-header">
+                    <h2>🏆 Leaderboard</h2>
+                    <button class="btn btn-ghost" onclick="loadLeaderboard()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18">
+                            <polyline points="23 4 23 10 17 10"/>
+                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                        </svg>
+                        Refresh
+                    </button>
+                </div>
+                <div class="leaderboard-container" id="leaderboard-container">
+                    <!-- Leaderboard loaded dynamically -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ============================================ -->
+    <!-- MODALS -->
+    <!-- ============================================ -->
+
+    <!-- Add Entry Modal -->
+    <div class="modal-overlay" id="entry-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Add Film Entry</h3>
+                <button class="modal-close" onclick="closeModal('entry-modal')">&times;</button>
+            </div>
+            <form id="entry-form" onsubmit="handleEntrySubmit(event)">
+                <div class="form-group">
+                    <label for="entry-title">Film Title</label>
+                    <input type="text" id="entry-title" placeholder="Enter film title" required>
+                </div>
+                <div class="form-group">
+                    <label for="entry-genre">Genre</label>
+                    <select id="entry-genre" required>
+                        <option value="">Select Genre</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Documentary">Documentary</option>
+                        <option value="Animation">Animation</option>
+                        <option value="Sci-Fi">Sci-Fi</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Action">Action</option>
+                        <option value="Inspirational">Inspirational</option>
+                        <option value="Experimental">Experimental</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="entry-video">Video Link</label>
+                    <input type="url" id="entry-video" placeholder="https://youtube.com/..." required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-ghost" onclick="closeModal('entry-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Entry</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Add Judge Modal -->
+    <div class="modal-overlay" id="judge-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Add Judge</h3>
+                <button class="modal-close" onclick="closeModal('judge-modal')">&times;</button>
+            </div>
+            <form id="judge-form" onsubmit="handleJudgeSubmit(event)">
+                <div class="form-group">
+                    <label for="judge-name">Judge Name</label>
+                    <input type="text" id="judge-name" placeholder="Enter judge name" required>
+                </div>
+                <div class="form-group">
+                    <label for="judge-email">Email Address</label>
+                    <input type="email" id="judge-email" placeholder="judge@example.com" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-ghost" onclick="closeModal('judge-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Add Judge</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Submit Scorecard Modal -->
+    <div class="modal-overlay" id="scorecard-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Submit Score Card</h3>
+                <button class="modal-close" onclick="closeModal('scorecard-modal')">&times;</button>
+            </div>
+            <form id="scorecard-form" onsubmit="handleScorecardSubmit(event)">
+                <div class="form-group">
+                    <label for="sc-entry">Film Entry</label>
+                    <select id="sc-entry" required>
+                        <option value="">Select Entry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sc-judge">Judge</label>
+                    <select id="sc-judge" required>
+                        <option value="">Select Judge</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sc-criterion">Criterion</label>
+                    <select id="sc-criterion" required>
+                        <option value="">Select Criterion</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="sc-score">Score: <span id="score-display" class="score-display">0</span></label>
+                    <input type="range" id="sc-score" min="0" max="10" value="0" oninput="updateScoreDisplay(this.value)">
+                    <div class="score-range-labels">
+                        <span>0</span>
+                        <span id="sc-max-label">10</span>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-ghost" onclick="closeModal('scorecard-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit Score</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Entry Modal -->
+    <div class="modal-overlay" id="edit-entry-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Edit Film Entry</h3>
+                <button class="modal-close" onclick="closeModal('edit-entry-modal')">&times;</button>
+            </div>
+            <form id="edit-entry-form" onsubmit="handleEditEntrySubmit(event)">
+                <input type="hidden" id="edit-entry-id">
+                <div class="form-group">
+                    <label for="edit-entry-title">Film Title</label>
+                    <input type="text" id="edit-entry-title" placeholder="Enter film title" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-entry-genre">Genre</label>
+                    <select id="edit-entry-genre" required>
+                        <option value="">Select Genre</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Documentary">Documentary</option>
+                        <option value="Animation">Animation</option>
+                        <option value="Sci-Fi">Sci-Fi</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Action">Action</option>
+                        <option value="Inspirational">Inspirational</option>
+                        <option value="Experimental">Experimental</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-entry-video">Video Link</label>
+                    <input type="url" id="edit-entry-video" placeholder="https://youtube.com/..." required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-ghost" onclick="closeModal('edit-entry-modal')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
